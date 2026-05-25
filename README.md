@@ -91,7 +91,7 @@ CucumberFramework/
 - **Java 17** or above — [Download](https://www.oracle.com/java/technologies/downloads/)
 - **Maven 3.8+** — [Download](https://maven.apache.org/download.cgi)
 - **Chrome Browser** (default) — or Firefox / Edge
-- **IntelliJ IDEA** (recommended) — [Download](https://www.jetbrains.com/idea/)
+- **IntelliJ IDEA Community Edition** (recommended) — [Download](https://www.jetbrains.com/idea/)
 - **Git** — [Download](https://git-scm.com/download/win)
 
 ---

@@ -1,6 +1,6 @@
 # CucumberFramework
 
-A **Hybrid Test Automation Framework** built with Java, Cucumber BDD, Selenium, and RestAssured — covering both **UI (Web)** and **API** test automation for the AEME BTA Portal and Amex Wearables application.
+A **Hybrid Test Automation Framework** built with Java, Cucumber BDD, Selenium, and RestAssured — covering both **UI (Web)** and **API** test automation for the AEME application.
 
 ---
 

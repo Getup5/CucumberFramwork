@@ -168,10 +168,7 @@ mvn test -Dcucumber.filter.tags="@CreateWearables"
 | `@API` | All API test scenarios |
 | `@UI` | All UI test scenarios |
 | `@Sanity` | Quick smoke/sanity test suite |
-| `@AmexWearable` | Amex Wearables API tests |
 | `@Login` | Login feature tests |
-| `@CreateWearables` | Create wearable API test |
-| `@GetWearableByClientCode` | Get client data API test |
 
 ---
 

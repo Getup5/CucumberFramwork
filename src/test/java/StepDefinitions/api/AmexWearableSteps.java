@@ -1,13 +1,13 @@
 package StepDefinitions.api;
 
 import Helper.Api.ApiHelper;
-import context.TestContext;
+import Context.TestContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
-import utils.ConfigReader;
-import utils.FileUtils;
-import utils.ResponseUtils;
+import Utils.ConfigReader;
+import Utils.FileUtils;
+import Utils.ResponseUtils;
 
 import java.util.List;
 import java.util.Map;

@@ -1,16 +1,16 @@
 package StepDefinitions.UI;
 
 import Helper.UI.UiHelper;
-import context.TestContext;
+import Context.TestContext;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.ConfigReader;
-import utils.LoggerUtils;
-import utils.WebDriverManagerUtil;
+import Utils.ConfigReader;
+import Utils.LoggerUtils;
+import Utils.WebDriverManagerUtil;
 
 import java.time.Duration;
 

@@ -3,9 +3,9 @@ package StepDefinitions.UI;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import utils.ExtentReportManager;
-import utils.LoggerUtils;
-import utils.WebDriverManagerUtil;
+import Utils.ExtentReportManager;
+import Utils.LoggerUtils;
+import Utils.WebDriverManagerUtil;
 
 public class Hooks {
 
@@ -44,10 +44,8 @@ public class Hooks {
         } else {
             ExtentReportManager.logPass("Test PASSED: " + scenario.getName());
         }
-
         WebDriverManagerUtil.quitDriver();
         LoggerUtils.logInfo("Browser closed");
-
         ExtentReportManager.flushReport();
         ExtentReportManager.cleanup();
     }

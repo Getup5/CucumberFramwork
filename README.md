@@ -48,11 +48,11 @@ CucumberFramework/
 │   │   │       ├── BtaCaseManagement.java
 │   │   │       ├── BtaTMCTransactions.java
 │   │   │       └── Hooks.java              # UI before/after hooks (browser lifecycle)
-│   │   ├── context/
+│   │   ├── Context/
 │   │   │   └── TestContext.java            # Shared state across steps (PicoContainer)
-│   │   ├── listeners/
+│   │   ├── Listeners/
 │   │   │   └── TestListener.java           # TestNG listener for ExtentReport
-│   │   └── utils/
+│   │   └── Utils/
 │   │       ├── ConfigReader.java           # Reads config.properties
 │   │       ├── WebDriverManagerUtil.java   # ThreadLocal WebDriver management
 │   │       ├── ExtentReportManager.java    # HTML report generation

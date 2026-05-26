@@ -42,12 +42,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.11.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.18.1</version>
@@ -81,7 +75,6 @@
             <version>2.0.16</version>
         </dependency>
 
-         <!-- ExtentReports for HTML Reporting -->
          <dependency>
              <groupId>com.aventstack</groupId>
              <artifactId>extentreports</artifactId>
@@ -100,7 +93,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -116,11 +108,10 @@
                         <cucumber.publish.quiet>true</cucumber.publish.quiet>
                     </systemPropertyVariables>
 
-                    <!-- Register TestNG Listener for ExtentReport -->
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>listeners.TestListener</value>
+                            <value>Listeners.TestListener</value>
                         </property>
                     </properties>
                 </configuration>

@@ -1,10 +1,10 @@
-package listeners;
+package Listeners;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import utils.ExtentReportManager;
-import utils.LoggerUtils;
+import Utils.ExtentReportManager;
+import Utils.LoggerUtils;
 
 /**
  * TestListener — kept for compatibility but flush is now handled

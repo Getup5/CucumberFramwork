@@ -1,6 +1,7 @@
-package context;
+package Context;
 
 import io.restassured.response.Response;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ public class TestContext {
     public String lastResponseBody;
     public Integer lastResponseStatusCode;
 
+    @Getter
     private final Map<String, String> dataStore =
             new HashMap<>();
 
@@ -25,7 +27,4 @@ public class TestContext {
     }
 
 
-    public Map<String, String> getDataStore() {
-        return dataStore;
-    }
 }

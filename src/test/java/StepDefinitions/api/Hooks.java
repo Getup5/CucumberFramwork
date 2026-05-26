@@ -1,11 +1,11 @@
 package StepDefinitions.api;
 
-import context.TestContext;
+import Context.TestContext;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import utils.ExtentReportManager;
-import utils.LoggerUtils;
+import Utils.ExtentReportManager;
+import Utils.LoggerUtils;
 
 /**
  * Hooks class for API Test Cases
@@ -24,7 +24,6 @@ public class Hooks {
     public void setUp(Scenario scenario) {
         LoggerUtils.logInfo("========== API Test Started: " + scenario.getName() + " ==========");
 
-        // Initialize ExtentReport
         ExtentReportManager.initializeExtentReports();
         ExtentReportManager.createTest(scenario.getName(), "Tags: " + scenario.getSourceTagNames());
         ExtentReportManager.logInfo("API Test Started");

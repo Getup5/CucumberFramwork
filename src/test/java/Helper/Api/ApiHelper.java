@@ -1,10 +1,10 @@
 package Helper.Api;
 
-import context.TestContext;
+import Context.TestContext;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import utils.ConfigReader;
-import utils.LoggerUtils;
+import Utils.ConfigReader;
+import Utils.LoggerUtils;
 
 public class ApiHelper {
 

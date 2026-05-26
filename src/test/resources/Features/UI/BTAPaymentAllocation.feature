@@ -1,6 +1,6 @@
 @UI @BTA
 
-Feature: BTA Memo Statement in AEME Portal
+Feature: BTA Payment Allocation in AEME Portal
 
   Background:
     Given Navigate to the AEME Portal

@@ -1,6 +1,6 @@
-package utils;
+package Utils;
 
-import context.TestContext;
+import Context.TestContext;
 import io.cucumber.datatable.DataTable;
 import org.testng.Assert;
 import java.util.List;

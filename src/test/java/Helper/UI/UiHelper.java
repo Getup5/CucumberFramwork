@@ -2,16 +2,19 @@ package Helper.UI;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.ExtentReportManager;
-import utils.LoggerUtils;
+import Utils.ExtentReportManager;
+import Utils.LoggerUtils;
 
 import java.time.Duration;
+import java.util.Base64;
 
 import static org.testng.Assert.*;
 
@@ -151,6 +154,28 @@ public class UiHelper {
         }
     }
 
+    // ========== SCREENSHOT HELPER METHOD ==========
+
+    /**
+     * Captures screenshot and attaches it to ExtentReport
+     * Called automatically when assertions fail
+     */
+    private void captureScreenshotOnFailure(String failureContext) {
+        try {
+            byte[] screenshot = ((TakesScreenshot) driver)
+                    .getScreenshotAs(OutputType.BYTES);
+            
+            if (ExtentReportManager.getTest() != null) {
+                String base64 = Base64.getEncoder().encodeToString(screenshot);
+                ExtentReportManager.getTest()
+                        .addScreenCaptureFromBase64String(base64, "Failure Screenshot - " + failureContext);
+                LoggerUtils.logInfo("Screenshot captured for failure: " + failureContext);
+            }
+        } catch (Exception e) {
+            LoggerUtils.logInfo("Failed to capture screenshot: " + e.getMessage());
+        }
+    }
+
     // ========== ASSERTION HELPER METHODS ==========
 
     /**
@@ -166,6 +191,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " is NOT displayed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " - Not Displayed");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -184,6 +210,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " text assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " - Text Mismatch");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -202,6 +229,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " text contains assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " - Text Not Found");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -222,6 +250,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ SUCCESS MESSAGE NOT FOUND - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Success Message Not Found");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -244,6 +273,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ Multiple elements assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Multiple Elements Not Displayed");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -268,10 +298,10 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " is still displayed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " - Still Displayed");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
-
 
     }
 // ...existing code...
@@ -289,6 +319,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " popup is NOT displayed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " Popup - Not Displayed");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -307,6 +338,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " popup message assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " Popup - Message Mismatch");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -325,6 +357,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " popup text contains assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " Popup - Text Not Found");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -350,12 +383,14 @@ public class UiHelper {
 
         } catch (AssertionError e) {
             String errorMessage = "✗ Alert assertion failed - " + e.getMessage();
+            captureScreenshotOnFailure("Alert Popup - Text Mismatch");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
 
         } catch (Exception e) {
             String errorMessage = "✗ Alert handling failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Error");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -389,6 +424,7 @@ public class UiHelper {
             String errorMessage = "✗ Alert assertion failed - " + e.getMessage();
 
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Text Not Found");
             ExtentReportManager.logFail(errorMessage);
 
             fail(errorMessage);
@@ -398,6 +434,7 @@ public class UiHelper {
             String errorMessage = "✗ Alert handling failed - " + e.getMessage();
 
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Error");
             ExtentReportManager.logFail(errorMessage);
 
             fail(errorMessage);
@@ -419,16 +456,17 @@ public class UiHelper {
 
             alert.dismiss();
             String message = "✓ Alert popup verified and dismissed. Message: '" + actualMessage + "'";
-            LoggerUtils.logInfo(message);
             ExtentReportManager.logPass(message);
         } catch (AssertionError e) {
             String errorMessage = "✗ Alert assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Text Mismatch");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         } catch (Exception e) {
             String errorMessage = "✗ Alert dismiss assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Error");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -454,11 +492,13 @@ public class UiHelper {
         } catch (AssertionError e) {
             String errorMessage = "✗ Alert assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Text Not Found");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         } catch (Exception e) {
             String errorMessage = "✗ Alert dismiss assertion failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure("Alert Popup - Error");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -478,6 +518,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " popup assertion/close failed - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " Popup - Assertion/Close Failed");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }
@@ -495,6 +536,7 @@ public class UiHelper {
         } catch (Exception e) {
             String errorMessage = "✗ " + elementName + " popup did not disappear - " + e.getMessage();
             LoggerUtils.logInfo(errorMessage);
+            captureScreenshotOnFailure(elementName + " Popup - Still Visible");
             ExtentReportManager.logFail(errorMessage);
             fail(errorMessage);
         }

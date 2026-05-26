@@ -5,8 +5,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import Helper.UI.UiHelper;
-import utils.WebDriverManagerUtil;
-import utils.LoggerUtils;
+import Utils.WebDriverManagerUtil;
+import Utils.LoggerUtils;
 
 public class BtaUserManagementSteps {
     private WebDriver driver;
@@ -44,7 +44,7 @@ public class BtaUserManagementSteps {
 
     @Then("User wait for few seconds")
     public void waitForFewSeconds() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(4000);
         LoggerUtils.logInfo("Waited for few seconds to observe the result");
     }
 }

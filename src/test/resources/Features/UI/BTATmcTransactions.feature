@@ -1,6 +1,6 @@
 @UI @Login
 
-Feature: User Management in AEME Portal
+Feature: BTA TMC Transactions in AEME Portal
 
   Background:
     Given Navigate to the AEME Portal
@@ -8,9 +8,9 @@ Feature: User Management in AEME Portal
     Then I click the login button
     And I should see the ONLS Helper Tool Home Page
 
-  @CreateNewUser_Test_01 @Sanity
-  Scenario: User create New User in User Management Section
-    When Click the User Management Section
-    Then Fill in the user details and save
+#  @CreateNewUser_Test_01 @Sanity
+#  Scenario: User create New User in User Management Section
+#    When Click the TMC Transaction Section
+#    Then Fill in the user details and save
 #    And  User wait for few seconds
 #   Then User should see the new user created successfully message

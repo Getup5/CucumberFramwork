@@ -5,8 +5,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.LoggerUtils;
-import utils.WebDriverManagerUtil;
+import Utils.LoggerUtils;
+import Utils.WebDriverManagerUtil;
 
 public class BtaMonthlyStatement {
     private WebDriver driver;
@@ -29,13 +29,11 @@ public class BtaMonthlyStatement {
         uiHelper.selectDropdownByText(By.xpath("/html/body/app-root/div[2]/div/div/bta-entry/div/div[2]/app-bta-monthly-statement/div/div/div[2]/div[2]/select"), "BTACLIENTBAH002-3744XXXXXXX6130");
         uiHelper.click(By.xpath("/html/body/app-root/div[2]/div/div/bta-entry/div/div[2]/app-bta-monthly-statement/div/div/div[2]/div[2]/button"));
         uiHelper.click(By.xpath("/html/body/app-root/div[2]/div/div/bta-entry/div/div[2]/app-bta-monthly-statement/div/div/div[2]/div[8]/div[2]/button"));
-        uiHelper.handleDownloadPopup();
     }
 
     @Then("User Verify the generated report is displayed in the Monthly Statement Section")
-    public void verifyGeneratedReport() {
-        uiHelper.assertSuccessMessage(By.xpath("/html/body/app-root/div[2]/div/div/bta-entry/div/div[2]/app-bta-large-reports/div/div/div[2]/div[3]"), "✓ Report queued for generation. You will be notified when it is ready for download");
-
+    public void verifyMonthlyReport() {
+        uiHelper.assertAndDismissAlertPopup("Downloading February 2025 in PDF format");
     }
 
 }

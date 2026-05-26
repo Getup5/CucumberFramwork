@@ -1,6 +1,6 @@
 @UI @BTA
 
-Feature: BTA Memo Statement in AEME Portal
+Feature: BTA Monthly Statement in AEME Portal
 
   Background:
     Given Navigate to the AEME Portal
@@ -9,8 +9,8 @@ Feature: BTA Memo Statement in AEME Portal
     And I should see the ONLS Helper Tool Home Page
 
   @Sanity @LargeReports_Test_01
-  Scenario: Verify BTA Large Report functionality
+  Scenario: Verify BTA Monthly Statement functionality
     When Click the Monthly Statement Section
     Then User Select the BTA Number and generate the Monthly report
-    And User Verify the generated report is displayed in the Large Report Section
+    And User Verify the generated report is displayed in the Monthly Statement Section
 

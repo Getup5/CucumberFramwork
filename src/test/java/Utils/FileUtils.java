@@ -1,9 +1,9 @@
-package utils;
+package Utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import context.TestContext;
+import Context.TestContext;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

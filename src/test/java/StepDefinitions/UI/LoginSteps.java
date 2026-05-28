@@ -3,6 +3,7 @@ package StepDefinitions.UI;
 import Helper.UI.UiHelper;
 import Context.TestContext;
 import io.cucumber.java.en.*;
+import io.cucumber.java.ja.但し;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,23 +40,20 @@ public class LoginSteps {
     public void iAmOnTheLoginPage() {
 
         String loginUrl = ConfigReader.getProperty("uiBaseUrl");
-
         WebDriverManagerUtil.navigateTo(loginUrl);
-
         LoggerUtils.logInfo("Navigated to AEME Portal");
     }
 
     @When("I enter username {string} and password {string}")
     public void iEnterUsernameAndPassword(String username, String password) {
-        uiHelper.enterText(By.id("l-user"), username);
-        uiHelper.enterText(By.id("l-pwd"), password);
+        uiHelper.enterText(By.xpath("//*[@id=\"username\"]"), username);
+        uiHelper.enterText(By.xpath("//*[@id=\"password\"]"), password);
         LoggerUtils.logInfo("Entered username and password");
     }
 
     @When("I click the login button")
     public void iClickTheLoginButton() {
-
-        uiHelper.click(By.xpath("//button[@type='submit']"));
+        uiHelper.click(By.xpath("/html/body/app-root/app-login/amex-login-form/div/div[4]/div[2]/div/div[4]/button"));
 
         LoggerUtils.logInfo("Clicked login button");
     }
@@ -73,4 +71,11 @@ public class LoginSteps {
 
         LoggerUtils.logInfo("Home page landed successfully");
     }
+
+@Then("User Click the BTA Section")
+public void clickBTASection() {
+    uiHelper.click(By.xpath("//span[contains(text(),'BTA')]"));
+    LoggerUtils.logInfo("Clicked the BTA Section");
+}
+
 }

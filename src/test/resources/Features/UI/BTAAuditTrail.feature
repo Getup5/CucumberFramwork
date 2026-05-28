@@ -7,6 +7,7 @@ Feature: BTA Memo Statement in AEME Portal
     When I enter username "admin" and password "admin"
     Then I click the login button
     And I should see the ONLS Helper Tool Home Page
+    And User Click the BTA Section
 
   @Sanity @AuditTrail_Test_01
   Scenario: Verify BTA Audit Trail functionality

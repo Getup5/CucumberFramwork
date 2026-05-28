@@ -7,7 +7,7 @@ Feature: Login Functionality
 
   @Sanity @Login_Test_01
   Scenario: User Login with valid credentials
-    When I enter username "admin" and password "admin"
+    When I enter username "corp.admin" and password "Corp@1234"
     And I click the login button
     And I should see the ONLS Helper Tool Home Page
 
